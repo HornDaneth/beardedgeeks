@@ -13,18 +13,18 @@ public class Merge {
 	 * @parameter
 	 * @required
 	 */
-	private File[] files;
+	private File[] propertiesFiles;
 
 	public File getTargetFile() {
 		return targetFile;
 	}
 
 	public File[] getFiles() {
-		return files;
+		return propertiesFiles;
 	}
 
 	public String toString() {
-		return "Merge [files=" + files + ", targetFile="
+		return "Merge [files=" + propertiesFiles + ", targetFile="
 				+ targetFile + "]";
 	}
 }

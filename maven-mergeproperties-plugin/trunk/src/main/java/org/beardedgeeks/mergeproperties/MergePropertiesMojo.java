@@ -28,16 +28,16 @@ public class MergePropertiesMojo extends AbstractMojo {
 	 * @description The properties files to merge.<br />
 	 * 
 	 * Usage:
-	 *
+	 * 
 	 * <pre>
 	 * &lt;merges&gt;
 	 *    &lt;merge&gt;
 	 *       &lt;targetFile&gt;${build.outputDirectory}/application.properties&lt;/targetFile&gt;
-	 *       &lt;files&gt;
+	 *       &lt;propertiesFiles&gt;
 	 *          &lt;propertiesFile&gt;src/main/config/${user.name}/application.properties&lt;/propertiesFileFile&gt;
 	 *          &lt;propertiesFile&gt;src/main/config/extended/application.properties&lt;/propertiesFileFile&gt;
 	 *          &lt;propertiesFile&gt;src/main/config/default/application.properties&lt;/propertiesFileFile&gt;
-	 *       &lt;/files&gt;
+	 *       &lt;/propertiesFiles&gt;
 	 *    &lt;/merge&gt;
 	 * &lt;/merges&gt;
 	 * </pre>
@@ -51,6 +51,7 @@ public class MergePropertiesMojo extends AbstractMojo {
 		for (Merge merge : merges) {
 			// merge properties files
 			final List<File> propertiesFiles = Arrays.asList(merge.getFiles());
+			// iterate backwards to get propertiesFiles priorities right
 			Collections.reverse(propertiesFiles);
 			final Properties mergedProperties = new Properties();
 			for (File propertiesFile : propertiesFiles) {
@@ -87,11 +88,24 @@ public class MergePropertiesMojo extends AbstractMojo {
 			// save to target file
 			final File targetPropertiesFile = merge.getTargetFile();
 			OutputStream output = null;
+			if (targetPropertiesFile.isDirectory())
+				throw new MojoExecutionException("File "
+						+ targetPropertiesFile.getAbsolutePath()
+						+ " is directory!");
 			try {
 				if (!targetPropertiesFile.exists()) {
-					targetPropertiesFile.getParentFile().mkdirs();
-					targetPropertiesFile.createNewFile();
+					if (!targetPropertiesFile.getParentFile().mkdirs())
+						throw new MojoExecutionException(
+								"Could not create directory: "
+										+ targetPropertiesFile.getParentFile()
+												.getAbsolutePath());
+					if (!targetPropertiesFile.createNewFile())
+						throw new MojoExecutionException(
+								"Could not create file: "
+										+ targetPropertiesFile
+												.getAbsolutePath());
 				}
+
 				output = new FileOutputStream(targetPropertiesFile);
 				mergedProperties.store(output, targetPropertiesFile.getName());
 			} catch (FileNotFoundException e) {
