@@ -137,7 +137,7 @@ public class MergePropertiesMojoTest {
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
 
-		final FileInputStream file2InputStreamMock = createMock(FileInputStream.class);
+		final FileInputStream fileInputStreamMock = createMock(FileInputStream.class);
 
 		final Properties propertiesMock = createMock(Properties.class);
 
@@ -146,16 +146,16 @@ public class MergePropertiesMojoTest {
 		expect(fileMock.isDirectory()).andReturn(false);
 		expect(fileMock.exists()).andReturn(true);
 		expectNew(FileInputStream.class, fileMock).andReturn(
-				file2InputStreamMock);
-		propertiesMock.load(file2InputStreamMock);
+				fileInputStreamMock);
+		propertiesMock.load(fileInputStreamMock);
 		expectLastCall().andThrow(new IOException());
 		expect(fileMock.getAbsolutePath()).andReturn("/test.properties");
-		file2InputStreamMock.close();
+		fileInputStreamMock.close();
 
-		replay(mergeMock, fileMock, file2InputStreamMock, propertiesMock,
+		replay(mergeMock, fileMock, fileInputStreamMock, propertiesMock,
 				FileInputStream.class, Properties.class);
 		mojo.execute();
-		verify(mergeMock, fileMock, file2InputStreamMock, propertiesMock,
+		verify(mergeMock, fileMock, fileInputStreamMock, propertiesMock,
 				FileInputStream.class, Properties.class);
 	}
 
