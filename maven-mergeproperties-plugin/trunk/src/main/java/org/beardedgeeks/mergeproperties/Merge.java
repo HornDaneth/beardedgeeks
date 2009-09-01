@@ -21,7 +21,7 @@ public class Merge {
 	}
 
 	public File[] getFiles() {
-		return propertiesFiles;
+		return propertiesFiles.clone();
 	}
 
 	public String toString() {
