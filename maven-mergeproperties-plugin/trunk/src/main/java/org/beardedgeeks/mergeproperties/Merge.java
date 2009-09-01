@@ -1,6 +1,7 @@
 package org.beardedgeeks.mergeproperties;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class Merge {
 	/**
@@ -24,7 +25,7 @@ public class Merge {
 	}
 
 	public String toString() {
-		return "Merge [files=" + propertiesFiles + ", targetFile="
-				+ targetFile + "]";
+		return "Merge [files=" + Arrays.asList(propertiesFiles)
+				+ ", targetFile=" + targetFile + "]";
 	}
 }
