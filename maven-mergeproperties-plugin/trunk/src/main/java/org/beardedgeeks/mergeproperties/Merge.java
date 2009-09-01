@@ -24,6 +24,7 @@ public class Merge {
 		return propertiesFiles.clone();
 	}
 
+	@Override
 	public String toString() {
 		return "Merge [files=" + Arrays.asList(propertiesFiles)
 				+ ", targetFile=" + targetFile + "]";
