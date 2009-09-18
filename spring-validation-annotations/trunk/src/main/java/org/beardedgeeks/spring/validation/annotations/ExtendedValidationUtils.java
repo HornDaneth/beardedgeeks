@@ -275,8 +275,8 @@ public class ExtendedValidationUtils {
 		if (value == null)
 			return;
 		try {
-			if (!((Integer) value.getClass().getMethod("length",
-					new Class<?>[] {}).invoke(value) < minLength))
+			if ((Integer) value.getClass().getMethod("length",
+					new Class<?>[] {}).invoke(value) < minLength)
 				errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
 		} catch (IllegalArgumentException e) {
 			throw new IllegalArgumentException("Validating object oftype "
@@ -416,8 +416,8 @@ public class ExtendedValidationUtils {
 		if (value == null)
 			return;
 		try {
-			if (!((Integer) value.getClass().getMethod("length",
-					new Class<?>[] {}).invoke(value) > maxLength))
+			if ((Integer) value.getClass().getMethod("length",
+					new Class<?>[] {}).invoke(value) > maxLength)
 				errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
 		} catch (IllegalArgumentException e) {
 			throw new IllegalArgumentException("Validating object oftype "
