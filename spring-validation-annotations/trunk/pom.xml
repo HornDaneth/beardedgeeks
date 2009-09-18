@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>Spring Validation Annotations</name>
-	<description>Allows simple annotations to ease the creation of Spring validators.</description>
+	<description>Simple annotations to ease the creation of Spring validators.</description>
 	<inceptionYear>2009</inceptionYear>
 	<url>http://code.google.com/p/beardedgeeks</url>
 
