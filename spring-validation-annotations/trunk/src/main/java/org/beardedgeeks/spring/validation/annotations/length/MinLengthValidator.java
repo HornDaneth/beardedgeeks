@@ -20,6 +20,6 @@ public class MinLengthValidator extends FieldValidator {
 			final String errorCode) {
 		int minLength = field.getAnnotation(MinLength.class).value();
 		ExtendedValidationUtils.rejectIfLengthMoreThan(errors, field.getName(),
-				minLength, errorCode, new Object[] {minLength});
+				minLength, errorCode, new Object[] { minLength });
 	}
 }

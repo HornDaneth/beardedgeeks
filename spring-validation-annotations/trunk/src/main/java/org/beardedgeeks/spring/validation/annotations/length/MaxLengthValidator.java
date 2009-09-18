@@ -20,6 +20,6 @@ public class MaxLengthValidator extends FieldValidator {
 			final String errorCode) {
 		int maxLength = field.getAnnotation(MaxLength.class).value();
 		ExtendedValidationUtils.rejectIfLengthMoreThan(errors, field.getName(),
-				maxLength, errorCode, new Object[] {maxLength});
+				maxLength, errorCode, new Object[] { maxLength });
 	}
 }
