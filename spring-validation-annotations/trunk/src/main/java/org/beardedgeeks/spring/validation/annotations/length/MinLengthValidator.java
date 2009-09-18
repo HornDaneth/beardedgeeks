@@ -16,7 +16,7 @@ public class MinLengthValidator extends FieldValidator {
 	}
 
 	@Override
-	public final void validate(final Field field, final Errors errors,
+	protected final void validate(final Field field, final Errors errors,
 			final String errorCode) {
 		int minLength = field.getAnnotation(MinLength.class).value();
 		ExtendedValidationUtils.rejectIfLengthMoreThan(errors, field.getName(),

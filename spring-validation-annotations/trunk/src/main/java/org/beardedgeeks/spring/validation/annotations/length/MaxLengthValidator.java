@@ -16,7 +16,7 @@ public class MaxLengthValidator extends FieldValidator {
 	}
 
 	@Override
-	public final void validate(final Field field, final Errors errors,
+	protected final void validate(final Field field, final Errors errors,
 			final String errorCode) {
 		int maxLength = field.getAnnotation(MaxLength.class).value();
 		ExtendedValidationUtils.rejectIfLengthMoreThan(errors, field.getName(),

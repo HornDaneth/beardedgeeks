@@ -16,7 +16,7 @@ public class MatchesPatternValidator extends FieldValidator {
 	}
 
 	@Override
-	public final void validate(final Field field, final Errors errors,
+	protected final void validate(final Field field, final Errors errors,
 			final String errorCode) {
 		String pattern = field.getAnnotation(MatchesPattern.class).value();
 		ExtendedValidationUtils.rejectIfNotMatches(errors, field.getName(),
