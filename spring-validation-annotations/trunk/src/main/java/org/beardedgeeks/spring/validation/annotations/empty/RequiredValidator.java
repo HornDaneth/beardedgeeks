@@ -8,6 +8,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
+/**
+ * Validator for {@link Required} annotations.
+ * 
+ * @author hleinone
+ */
 @Component("requiredValidator")
 public class RequiredValidator extends FieldValidator {
 	@Override

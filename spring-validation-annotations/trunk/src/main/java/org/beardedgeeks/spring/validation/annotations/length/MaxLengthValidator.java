@@ -8,6 +8,11 @@ import org.beardedgeeks.spring.validation.annotations.FieldValidator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
+/**
+ * Validator for {@link MaxLength} annotations.
+ * 
+ * @author hleinone
+ */
 @Component("maxLengthValidator")
 public class MaxLengthValidator extends FieldValidator {
 	@Override

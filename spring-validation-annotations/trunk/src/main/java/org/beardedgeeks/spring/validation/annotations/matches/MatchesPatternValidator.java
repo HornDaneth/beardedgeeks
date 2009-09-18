@@ -8,6 +8,11 @@ import org.beardedgeeks.spring.validation.annotations.FieldValidator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
+/**
+ * Validator for {@link MatchesPattern} annotations.
+ * 
+ * @author hleinone
+ */
 @Component("matchesPatternValidator")
 public class MatchesPatternValidator extends FieldValidator {
 	@Override

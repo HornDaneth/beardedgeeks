@@ -8,6 +8,11 @@ import org.beardedgeeks.spring.validation.annotations.FieldValidator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
+/**
+ * Validator for {@link MinLength} annotations.
+ * 
+ * @author hleinone
+ */
 @Component("minLengthValidator")
 public class MinLengthValidator extends FieldValidator {
 	@Override
