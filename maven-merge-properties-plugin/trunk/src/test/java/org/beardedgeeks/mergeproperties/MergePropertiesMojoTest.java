@@ -21,6 +21,11 @@ import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+/**
+ * Test class for {@link MergePropertiesMojo}.
+ * 
+ * @author hleinone
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(MergePropertiesMojo.class)
 public class MergePropertiesMojoTest {
