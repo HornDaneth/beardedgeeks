@@ -4,7 +4,7 @@
 
 	<groupId>org.beardedgeeks</groupId>
 	<artifactId>maven-merge-properties-plugin</artifactId>
-	<version>0.3-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Maven Merge Properties Plugin</name>
@@ -64,6 +64,10 @@
 			<uniqueVersion>false</uniqueVersion>
 			<url>svn:https://beardedgeeks.googlecode.com/svn/repository/snapshots</url>
 		</snapshotRepository>
+		<site>
+			<id>beardedgeeks-googlecode</id>
+			<url>svn>:https://beardedgeeks.googlecode.com/svn/docs/maven-merge-properties-plugin/${project.version}</url>
+		</site>
 	</distributionManagement>
 
 	<build>
