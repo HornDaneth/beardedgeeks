@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Maven Merge Properties Plugin - merge-properties:merge</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                    <span id="bannerLeft">
+    
+            Maven Merge Properties Plugin
+    
+            </span>
+                        <a href="http://beardedgeeks.org" id="bannerRight">
+    
+                                            <img src="bannerRight.png" alt="Bearded Geeks" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 20 Sep 2009 13:50:57
+                  &nbsp;| Version: 0.1
+                      </div>
+            <div class="xright">            <a href="http://maven.apache.org/" class="externalLink">Maven 2</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="plugin-info.html">Goals</a>
+          </li>
+              
+    <li class="none">
+                    <a href="usage.html">Usage</a>
+          </li>
+          </ul>
+              <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-reports.html">Project Reports</a>
+                </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2><a name="merge-properties:merge"></a>merge-properties:merge</h2>
+<p><strong>Full name</strong>:</p>
+<p>org.beardedgeeks:maven-merge-properties-plugin:0.1:merge</p>
+<p><strong>Description</strong>:</p>
+<div>Merges multiple properties files into one.</div><p><strong>Attributes</strong>:</p>
+<ul><li>Requires a Maven 2.0 project to be executed.</li>
+</ul>
+<div class="section"><h3><a name="Required_Parameters"></a>Required Parameters</h3>
+<table class="bodyTable"><tr class="a"><th>Name</th>
+<th>Type</th>
+<th>Since</th>
+<th>Description</th>
+</tr>
+<tr class="b"><td><strong><a href="#merges">merges</a></strong></td>
+<td><code>Merge[]</code></td>
+<td><code>-</code></td>
+<td>The properties files to merge. <br />
+
+Usage: 
+
+<pre>
+&lt;merges&gt;
+&lt;merge&gt;
+&lt;targetFile&gt;${build.outputDirectory}/application.properties&lt;/targetFile&gt;
+&lt;propertiesFiles&gt;
+&lt;propertiesFile&gt;src/main/config/${user.name}/application.properties&lt;/propertiesFileFile&gt;
+&lt;propertiesFile&gt;src/main/config/extended/application.properties&lt;/propertiesFileFile&gt;
+&lt;propertiesFile&gt;src/main/config/default/application.properties&lt;/propertiesFileFile&gt;
+&lt;/propertiesFiles&gt;
+&lt;/merge&gt;
+&lt;/merges&gt;
+</pre><br />
+</td>
+</tr>
+</table>
+</div>
+<div class="section"><h3><a name="Parameter_Details"></a>Parameter Details</h3>
+<p><strong><a name="merges">merges</a>:</strong></p>
+<div>The properties files to merge. <br />
+
+Usage: 
+
+<pre>
+&lt;merges&gt;
+&lt;merge&gt;
+&lt;targetFile&gt;${build.outputDirectory}/application.properties&lt;/targetFile&gt;
+&lt;propertiesFiles&gt;
+&lt;propertiesFile&gt;src/main/config/${user.name}/application.properties&lt;/propertiesFileFile&gt;
+&lt;propertiesFile&gt;src/main/config/extended/application.properties&lt;/propertiesFileFile&gt;
+&lt;propertiesFile&gt;src/main/config/default/application.properties&lt;/propertiesFileFile&gt;
+&lt;/propertiesFiles&gt;
+&lt;/merge&gt;
+&lt;/merges&gt;
+</pre></div><ul><li><strong>Type</strong>: <code>org.beardedgeeks.mergeproperties.Merge[]</code></li>
+<li><strong>Required</strong>: <code>Yes</code></li>
+</ul>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          Bearded Geeks
+          
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
