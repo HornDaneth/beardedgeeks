@@ -25,10 +25,9 @@ import org.apache.maven.plugin.MojoFailureException;
  */
 public class MergePropertiesMojo extends AbstractMojo {
 	/**
-	 * @description The properties files to merge.<br />
-	 * 
+	 * The properties files to merge.
+	 * <br>
 	 * Usage:
-	 * 
 	 * <pre>
 	 * &lt;merges&gt;
 	 *    &lt;merge&gt;
@@ -47,6 +46,10 @@ public class MergePropertiesMojo extends AbstractMojo {
 	 */
 	private Merge[] merges;
 
+	/**
+	 * @see org.apache.maven.plugin.AbstractMojo#execute()
+	 */
+	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		for (Merge merge : merges) {
 			// merge properties files
