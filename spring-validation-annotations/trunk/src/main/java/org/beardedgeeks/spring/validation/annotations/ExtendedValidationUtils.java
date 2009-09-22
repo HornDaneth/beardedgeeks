@@ -138,22 +138,22 @@ public class ExtendedValidationUtils {
 					new Class<?>[] { String.class }).invoke(value, pattern))
 				errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
 		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (IllegalAccessException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (InvocationTargetException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (SecurityException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (NoSuchMethodException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (ClassCastException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		}
 	}
@@ -279,22 +279,22 @@ public class ExtendedValidationUtils {
 					new Class<?>[] {}).invoke(value) < minLength)
 				errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
 		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (IllegalAccessException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (InvocationTargetException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (SecurityException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (NoSuchMethodException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (ClassCastException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		}
 	}
@@ -420,23 +420,286 @@ public class ExtendedValidationUtils {
 					new Class<?>[] {}).invoke(value) > maxLength)
 				errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
 		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (IllegalAccessException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (InvocationTargetException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (SecurityException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (NoSuchMethodException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		} catch (ClassCastException e) {
-			throw new IllegalArgumentException("Validating object oftype "
+			throw new IllegalArgumentException("Validating object of type "
 					+ value.getClass().getName() + " is not supported.", e);
 		}
 	}
+
+	/**
+	 * Reject the given field with the given error code if the value is less
+	 * than <code>minValue</code>. Value <code>null</code> is always considered
+	 * valid. Requires the validated object to be an instance of
+	 * {@link java.lang.Number}, implement {@link java.lang.Comparable} and have
+	 * a constructor with {@link java.lang.String} parameter.
+	 * <p>
+	 * The object whose field is being validated does not need to be passed in
+	 * because the {@link Errors} instance can resolve field values by itself
+	 * (it will usually hold an internal reference to the target object).
+	 * 
+	 * @param errors
+	 *            the <code>Errors</code> instance to register errors on
+	 * @param field
+	 *            the field name to check
+	 * @param pattern
+	 *            the pattern to match
+	 * @param errorCode
+	 *            the error code, interpretable as message key
+	 */
+	public static void rejectIfValueLessThan(final Errors errors,
+			final String field, final Comparable<? extends Number> minValue,
+			final String errorCode) {
+		rejectIfValueLessThan(errors, field, minValue, errorCode, null, null);
+	}
+
+	/**
+	 * Reject the given field with the given error code and default message if
+	 * the value is less than <code>minValue</code>. Value <code>null</code> is
+	 * always considered valid. Requires the validated object to be an instance
+	 * of {@link java.lang.Number}, implement {@link java.lang.Comparable} and
+	 * have a constructor with {@link java.lang.String} parameter.
+	 * <p>
+	 * The object whose field is being validated does not need to be passed in
+	 * because the {@link Errors} instance can resolve field values by itself
+	 * (it will usually hold an internal reference to the target object).
+	 * 
+	 * @param errors
+	 *            the <code>Errors</code> instance to register errors on
+	 * @param field
+	 *            the field name to check
+	 * @param pattern
+	 *            the pattern to match
+	 * @param errorCode
+	 *            error code, interpretable as message key
+	 * @param defaultMessage
+	 *            fallback default message
+	 */
+	public static void rejectIfValueLessThan(final Errors errors,
+			final String field, final Comparable<? extends Number> minValue,
+			final String errorCode, final String defaultMessage) {
+		rejectIfValueLessThan(errors, field, minValue, errorCode, null,
+				defaultMessage);
+	}
+
+	/**
+	 * Reject the given field with the given error code and error arguments if
+	 * the value is less than <code>minValue</code>. Value <code>null</code> is
+	 * always considered valid. Requires the validated object to be an instance
+	 * of {@link java.lang.Number}, implement {@link java.lang.Comparable} and
+	 * have a constructor with {@link java.lang.String} parameter.
+	 * <p>
+	 * The object whose field is being validated does not need to be passed in
+	 * because the {@link Errors} instance can resolve field values by itself
+	 * (it will usually hold an internal reference to the target object).
+	 * 
+	 * @param errors
+	 *            the <code>Errors</code> instance to register errors on
+	 * @param field
+	 *            the field name to check
+	 * @param pattern
+	 *            the pattern to match
+	 * @param errorCode
+	 *            the error code, interpretable as message key
+	 * @param errorArgs
+	 *            the error arguments, for argument binding via MessageFormat
+	 *            (can be <code>null</code>)
+	 */
+	public static void rejectIfValueLessThan(final Errors errors,
+			final String field, final Comparable<? extends Number> minValue,
+			final String errorCode, final Object[] errorArgs) {
+		rejectIfValueLessThan(errors, field, minValue, errorCode, errorArgs,
+				null);
+	}
+
+	/**
+	 * Reject the given field with the given error code, error arguments and
+	 * default message if the value is less than <code>minValue</code>. Value
+	 * <code>null</code> is always considered valid. Requires the validated
+	 * object to be an instance of {@link java.lang.Number}, implement
+	 * {@link java.lang.Comparable} and have a constructor with
+	 * {@link java.lang.String} parameter.
+	 * <p>
+	 * The object whose field is being validated does not need to be passed in
+	 * because the {@link Errors} instance can resolve field values by itself
+	 * (it will usually hold an internal reference to the target object).
+	 * 
+	 * @param errors
+	 *            the <code>Errors</code> instance to register errors on
+	 * @param field
+	 *            the field name to check
+	 * @param minValue
+	 *            the minimum value
+	 * @param errorCode
+	 *            the error code, interpretable as message key
+	 * @param errorArgs
+	 *            the error arguments, for argument binding via MessageFormat
+	 *            (can be <code>null</code>)
+	 * @param defaultMessage
+	 *            fallback default message
+	 */
+	@SuppressWarnings("unchecked")
+	public static void rejectIfValueLessThan(final Errors errors,
+			final String field, final Comparable<? extends Number> minValue,
+			final String errorCode, final Object[] errorArgs,
+			final String defaultMessage) {
+
+		Assert.notNull(errors, "Errors object must not be null");
+		final Object value = errors.getFieldValue(field);
+		if (value == null)
+			return;
+		try {
+			if (((Comparable<Number>) minValue).compareTo((Number) value) > 0)
+				errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
+		} catch (ClassCastException e) {
+			throw new IllegalArgumentException("Validating object of type "
+					+ value.getClass().getName() + " against type "
+					+ minValue.getClass().getName() + " is not supported.", e);
+		}
+	}
+
+	/**
+	 * Reject the given field with the given error code if the value is more
+	 * than <code>maxValue</code>. Value <code>null</code> is always considered
+	 * valid. Requires the validated object to be an instance of
+	 * {@link java.lang.Number}, implement {@link java.lang.Comparable} and have
+	 * a constructor with {@link java.lang.String} parameter.
+	 * <p>
+	 * The object whose field is being validated does not need to be passed in
+	 * because the {@link Errors} instance can resolve field values by itself
+	 * (it will usually hold an internal reference to the target object).
+	 * 
+	 * @param errors
+	 *            the <code>Errors</code> instance to register errors on
+	 * @param field
+	 *            the field name to check
+	 * @param pattern
+	 *            the pattern to match
+	 * @param errorCode
+	 *            the error code, interpretable as message key
+	 */
+	public static void rejectIfValueMoreThan(final Errors errors,
+			final String field, final Comparable<? extends Number> maxValue,
+			final String errorCode) {
+		rejectIfValueMoreThan(errors, field, maxValue, errorCode, null, null);
+	}
+
+	/**
+	 * Reject the given field with the given error code and default message if
+	 * the value is more than <code>maxValue</code>. Value <code>null</code> is
+	 * always considered valid. Requires the validated object to be an instance
+	 * of {@link java.lang.Number}, implement {@link java.lang.Comparable} and
+	 * have a constructor with {@link java.lang.String} parameter.
+	 * <p>
+	 * The object whose field is being validated does not need to be passed in
+	 * because the {@link Errors} instance can resolve field values by itself
+	 * (it will usually hold an internal reference to the target object).
+	 * 
+	 * @param errors
+	 *            the <code>Errors</code> instance to register errors on
+	 * @param field
+	 *            the field name to check
+	 * @param pattern
+	 *            the pattern to match
+	 * @param errorCode
+	 *            error code, interpretable as message key
+	 * @param defaultMessage
+	 *            fallback default message
+	 */
+	public static void rejectIfValueMoreThan(final Errors errors,
+			final String field, final Comparable<? extends Number> maxValue,
+			final String errorCode, final String defaultMessage) {
+		rejectIfValueMoreThan(errors, field, maxValue, errorCode, null,
+				defaultMessage);
+	}
+
+	/**
+	 * Reject the given field with the given error code and error arguments if
+	 * the value is less than <code>minValue</code>. Value <code>null</code> is
+	 * always considered valid. Requires the validated object to be an instance
+	 * of {@link java.lang.Number}, implement {@link java.lang.Comparable} and
+	 * have a constructor with {@link java.lang.String} parameter.
+	 * <p>
+	 * The object whose field is being validated does not need to be passed in
+	 * because the {@link Errors} instance can resolve field values by itself
+	 * (it will usually hold an internal reference to the target object).
+	 * 
+	 * @param errors
+	 *            the <code>Errors</code> instance to register errors on
+	 * @param field
+	 *            the field name to check
+	 * @param pattern
+	 *            the pattern to match
+	 * @param errorCode
+	 *            the error code, interpretable as message key
+	 * @param errorArgs
+	 *            the error arguments, for argument binding via MessageFormat
+	 *            (can be <code>null</code>)
+	 */
+	public static void rejectIfValueMoreThan(final Errors errors,
+			final String field, final Comparable<? extends Number> maxValue,
+			final String errorCode, final Object[] errorArgs) {
+		rejectIfValueMoreThan(errors, field, maxValue, errorCode, errorArgs,
+				null);
+	}
+
+	/**
+	 * Reject the given field with the given error code, error arguments and
+	 * default message if the value is more than <code>maxValue</code>. Value
+	 * <code>null</code> is always considered valid. Requires the validated
+	 * object to be an instance of {@link java.lang.Number}, implement
+	 * {@link java.lang.Comparable} and have a constructor with
+	 * {@link java.lang.String} parameter.
+	 * <p>
+	 * The object whose field is being validated does not need to be passed in
+	 * because the {@link Errors} instance can resolve field values by itself
+	 * (it will usually hold an internal reference to the target object).
+	 * 
+	 * @param errors
+	 *            the <code>Errors</code> instance to register errors on
+	 * @param field
+	 *            the field name to check
+	 * @param pattern
+	 *            the pattern to match
+	 * @param errorCode
+	 *            the error code, interpretable as message key
+	 * @param errorArgs
+	 *            the error arguments, for argument binding via MessageFormat
+	 *            (can be <code>null</code>)
+	 * @param defaultMessage
+	 *            fallback default message
+	 */
+	@SuppressWarnings("unchecked")
+	public static void rejectIfValueMoreThan(final Errors errors,
+			final String field, final Comparable<? extends Number> maxValue,
+			final String errorCode, final Object[] errorArgs,
+			final String defaultMessage) {
+
+		Assert.notNull(errors, "Errors object must not be null");
+		final Object value = errors.getFieldValue(field);
+		if (value == null)
+			return;
+		try {
+			if (((Comparable<Number>) maxValue).compareTo((Number) value) < 0)
+				errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
+		} catch (ClassCastException e) {
+			throw new IllegalArgumentException("Validating object of type "
+					+ value.getClass().getName() + " against type "
+					+ maxValue.getClass().getName() + " is not supported.", e);
+		}
+	}
+
 }
