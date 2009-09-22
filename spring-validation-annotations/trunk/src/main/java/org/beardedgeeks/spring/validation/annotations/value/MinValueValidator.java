@@ -4,6 +4,10 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Type;
+
+import javax.lang.model.type.PrimitiveType;
+import javax.lang.model.type.TypeKind;
 
 import org.beardedgeeks.spring.validation.annotations.ExtendedValidationUtils;
 import org.beardedgeeks.spring.validation.annotations.FieldValidator;
@@ -19,7 +23,7 @@ import org.springframework.validation.Errors;
 public class MinValueValidator extends FieldValidator {
 	@Override
 	protected final Class<? extends Annotation> getAnnotationType() {
-		return MaxValue.class;
+		return MinValue.class;
 	}
 
 	@SuppressWarnings("unchecked")
