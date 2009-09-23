@@ -1,0 +1,28 @@
+  ------
+  Introduction
+  ------
+  hleinone
+  ------
+  20th September 20009
+  ------
+
+About Spring Validation Annotations
+
+  The Spring Validation Annotations makes creation of Spring validators lots
+  and lots easier! Using the built-in annotations you can annotate the fields
+  in validatable objects with the restrictions you desire to have, and use
+  their respective validators for validating the fields. It's as easy as
+  1-2-3-4!
+  
+  An example:
+  
++---+
+@Validatable
+public class Foo {
+  @Required
+  @MinLength(3)
+  @MaxLength(10)
+  @MatchesPattern("test.*")
+  private String bar;
+}
++---+
