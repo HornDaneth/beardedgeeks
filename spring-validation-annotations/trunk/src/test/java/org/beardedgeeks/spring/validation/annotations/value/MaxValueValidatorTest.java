@@ -6,8 +6,8 @@ import static org.junit.Assert.assertEquals;
 import static org.powermock.api.easymock.PowerMock.createMock;
 import static org.powermock.api.easymock.PowerMock.expectLastCall;
 import static org.powermock.api.easymock.PowerMock.mockStatic;
-import static org.powermock.api.easymock.PowerMock.replayAll;
-import static org.powermock.api.easymock.PowerMock.verifyAll;
+import static org.powermock.api.easymock.PowerMock.replay;
+import static org.powermock.api.easymock.PowerMock.verify;
 
 import java.lang.reflect.Field;
 
@@ -29,19 +29,28 @@ public class MaxValueValidatorTest {
 	}
 
 	@Test
-	public void testValidate() throws SecurityException, NoSuchFieldException {
-		final Errors errorsMock = createMock(Errors.class);
-		final Field fieldMock = IntTestObject.class.getDeclaredField("foo");
-		mockStatic(ExtendedValidationUtils.class);
-		ExtendedValidationUtils.rejectIfLengthMoreThan(eq(errorsMock),
-				eq("foo"), eq(3), eq("error"), aryEq(new Object[] { 3 }));
-		expectLastCall();
-		replayAll();
-		new MaxValueValidator().validate(fieldMock, errorsMock, "error");
-		verifyAll();
+	public void testGetAnnotationValue() throws SecurityException,
+			NoSuchFieldException {
+		final Field fieldMock = TestObject.class.getDeclaredField("foo");
+		assertEquals("3", new MaxValueValidator().getAnnotationValue(fieldMock));
 	}
 
-	private static final class IntTestObject {
+	@Test
+	public void testValidateNumber() throws SecurityException,
+			NoSuchFieldException {
+		final Errors errorsMock = createMock(Errors.class);
+		final Field fieldMock = TestObject.class.getDeclaredField("foo");
+		mockStatic(ExtendedValidationUtils.class);
+		ExtendedValidationUtils.rejectIfValueMoreThan(eq(errorsMock),
+				eq("foo"), eq(3), eq("error"), aryEq(new Object[] { 3 }));
+		expectLastCall();
+		replay(errorsMock, ExtendedValidationUtils.class);
+		new MaxValueValidator().validateNumber(fieldMock, errorsMock, "error",
+				3);
+		verify(errorsMock, ExtendedValidationUtils.class);
+	}
+
+	private static final class TestObject {
 		@SuppressWarnings("unused")
 		@MaxValue("3")
 		private int foo;

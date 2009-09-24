@@ -29,7 +29,15 @@ public class MinValueValidatorTest {
 	}
 
 	@Test
-	public void testValidate() throws SecurityException, NoSuchFieldException {
+	public void testGetAnnotationValue() throws SecurityException,
+			NoSuchFieldException {
+		final Field fieldMock = TestObject.class.getDeclaredField("foo");
+		assertEquals("3", new MinValueValidator().getAnnotationValue(fieldMock));
+	}
+
+	@Test
+	public void testValidateNumber() throws SecurityException,
+			NoSuchFieldException {
 		final Errors errorsMock = createMock(Errors.class);
 		final Field fieldMock = TestObject.class.getDeclaredField("foo");
 		mockStatic(ExtendedValidationUtils.class);
@@ -37,7 +45,8 @@ public class MinValueValidatorTest {
 				eq("foo"), eq(3), eq("error"), aryEq(new Object[] { 3 }));
 		expectLastCall();
 		replay(errorsMock, ExtendedValidationUtils.class);
-		new MinValueValidator().validate(fieldMock, errorsMock, "error");
+		new MinValueValidator().validateNumber(fieldMock, errorsMock, "error",
+				3);
 		verify(errorsMock, ExtendedValidationUtils.class);
 	}
 
