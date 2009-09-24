@@ -12,7 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 /**
- * The class enabling validation of fields in an object.
+ * Enables validation of fields in an object.
  * 
  * @author hleinone
  * @see org.springframework.validation.Validator
