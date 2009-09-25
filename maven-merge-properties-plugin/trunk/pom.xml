@@ -4,7 +4,7 @@
 
 	<groupId>org.beardedgeeks</groupId>
 	<artifactId>maven-merge-properties-plugin</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Maven Merge Properties Plugin</name>
@@ -84,6 +84,8 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+					<fork>true</fork>
+					<maxmem>1024m</maxmem>
 				</configuration>
 			</plugin>
 			<plugin>
