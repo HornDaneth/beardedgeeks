@@ -30,14 +30,14 @@ public class MergePropertiesMojo extends AbstractMojo {
 	 * 
 	 * <pre>
 	 * &lt;merges&gt;
-	 *    &lt;merge&gt;
-	 *       &lt;targetFile&gt;${build.outputDirectory}/application.properties&lt;/targetFile&gt;
-	 *       &lt;propertiesFiles&gt;
-	 *          &lt;propertiesFile&gt;src/main/config/${user.name}/application.properties&lt;/propertiesFile&gt;
-	 *          &lt;propertiesFile&gt;src/main/config/extended/application.properties&lt;/propertiesFile&gt;
-	 *          &lt;propertiesFile&gt;src/main/config/default/application.properties&lt;/propertiesFile&gt;
-	 *       &lt;/propertiesFiles&gt;
-	 *    &lt;/merge&gt;
+	 * &nbsp;&nbsp;&lt;merge&gt;
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&lt;targetFile&gt;${build.outputDirectory}/application.properties&lt;/targetFile&gt;
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;propertiesFiles&gt;
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;propertiesFile&gt;src/main/config/${user.name}/application.properties&lt;/propertiesFile&gt;
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;propertiesFile&gt;src/main/config/extended/application.properties&lt;/propertiesFile&gt;
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;propertiesFile&gt;src/main/config/default/application.properties&lt;/propertiesFile&gt;
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&lt;/propertiesFiles&gt;
+	 * &nbsp;&nbsp;&lt;/merge&gt;
 	 * &lt;/merges&gt;
 	 * </pre>
 	 * 

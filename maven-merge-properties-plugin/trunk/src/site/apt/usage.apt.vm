@@ -3,7 +3,7 @@
   ------
   hleinone
   ------
-  20th September 20009
+  26th September 20009
   ------
 
 Usage
@@ -68,20 +68,20 @@ Usage
 
   The example configuration above merges some custom application.properties
   with a default one so that if a property exists in both properties files, the
-  one in the custom file is used over the in the default applicaiton.properties
-  file. The merged properties file is then moved to the project output
-  directory. Also the plugin execution is bound to compile phase so that it
-  runs automatically on each compilation.
+  one from the custom file is used over the from the default
+  application.properties file. The merged properties file is then moved to the
+  project output directory. Also, the plugin execution is bound to compile
+  phase so that it runs automatically on each compilation.
   
 *  Using Maven properties
 
-  In the example above the <<<$\{property\}>>> variable is a plain
+  In the example above the <<<$\{property\}>>> variable is just a plain
   {{{http://maven.apache.org/pom.html#Properties}Maven property}}. Those can be
-  provided to the plugin using
+  provided to the plugin using for example
   {{{http://maven.apache.org/guides/introduction/introduction-to-profiles.html}build profiles}},
   {{{http://maven.apache.org/examples/injecting-properties-via-settings.html}settings.xml}}
-  or command-line arguments appending <<<-Dproperty=foo>>> to the command. It's
-  also possible to use any environment variable or
+  or command-line arguments appending f.ex. <<<-Dproperty=foo>>> to the
+  command. It's also possible to use any environment variable or
   {{{http://java.sun.com/docs/books/tutorial/essential/environment/sysprop.html}Java System Property}}.
-  This enables i.e. creation of user-specific properties files using the
+  That enables f.ex. creation of user-specific properties files using the
   <<<$\{user.name\}>>> property.
