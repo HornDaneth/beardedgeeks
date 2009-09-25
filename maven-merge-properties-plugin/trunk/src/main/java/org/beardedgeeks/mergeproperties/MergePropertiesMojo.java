@@ -25,17 +25,17 @@ import org.apache.maven.plugin.MojoFailureException;
  */
 public class MergePropertiesMojo extends AbstractMojo {
 	/**
-	 * The properties files to merge.
-	 * <br>
+	 * The properties files to merge. <br>
 	 * Usage:
+	 * 
 	 * <pre>
 	 * &lt;merges&gt;
 	 *    &lt;merge&gt;
 	 *       &lt;targetFile&gt;${build.outputDirectory}/application.properties&lt;/targetFile&gt;
 	 *       &lt;propertiesFiles&gt;
-	 *          &lt;propertiesFile&gt;src/main/config/${user.name}/application.properties&lt;/propertiesFileFile&gt;
-	 *          &lt;propertiesFile&gt;src/main/config/extended/application.properties&lt;/propertiesFileFile&gt;
-	 *          &lt;propertiesFile&gt;src/main/config/default/application.properties&lt;/propertiesFileFile&gt;
+	 *          &lt;propertiesFile&gt;src/main/config/${user.name}/application.properties&lt;/propertiesFile&gt;
+	 *          &lt;propertiesFile&gt;src/main/config/extended/application.properties&lt;/propertiesFile&gt;
+	 *          &lt;propertiesFile&gt;src/main/config/default/application.properties&lt;/propertiesFile&gt;
 	 *       &lt;/propertiesFiles&gt;
 	 *    &lt;/merge&gt;
 	 * &lt;/merges&gt;
@@ -96,18 +96,24 @@ public class MergePropertiesMojo extends AbstractMojo {
 						+ targetPropertiesFile.getAbsolutePath()
 						+ " is directory!");
 			try {
-				if (!targetPropertiesFile.exists()) {
-					if (!targetPropertiesFile.getParentFile().mkdirs())
-						throw new MojoExecutionException(
-								"Could not create directory: "
-										+ targetPropertiesFile.getParentFile()
-												.getAbsolutePath());
-					if (!targetPropertiesFile.createNewFile())
-						throw new MojoExecutionException(
-								"Could not create file: "
-										+ targetPropertiesFile
-												.getAbsolutePath());
-				}
+				if (targetPropertiesFile.exists()
+						&& !targetPropertiesFile.delete())
+					throw new MojoExecutionException("Could not remove file: "
+							+ targetPropertiesFile.getAbsolutePath());
+
+				final File targetDirectory = targetPropertiesFile
+						.getParentFile();
+
+				if (!targetDirectory.exists() && !targetDirectory.mkdirs())
+					throw new MojoExecutionException(
+							"Could not create directory: "
+									+ targetDirectory.getAbsolutePath());
+				if (!targetDirectory.isDirectory())
+					throw new MojoExecutionException("Not a directory: "
+							+ targetDirectory.getAbsolutePath());
+				if (!targetPropertiesFile.createNewFile())
+					throw new MojoExecutionException("Could not create file: "
+							+ targetPropertiesFile.getAbsolutePath());
 
 				output = new FileOutputStream(targetPropertiesFile);
 				mergedProperties.store(output, targetPropertiesFile.getName());
