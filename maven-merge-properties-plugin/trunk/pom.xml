@@ -13,7 +13,7 @@
 	<url>http://code.google.com/p/beardedgeeks</url>
 
 	<prerequisites>
-		<maven>2.0.1</maven>
+		<maven>2.0.9</maven>
 	</prerequisites>
 
 	<developers>
@@ -75,6 +75,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -171,7 +172,7 @@
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-plugin-api</artifactId>
-			<version>2.0.6</version>
+			<version>${prerequisites.maven}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
