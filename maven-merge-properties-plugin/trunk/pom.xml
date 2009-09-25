@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.beardedgeeks</groupId>
@@ -69,6 +70,11 @@
 			<url>svn:https://beardedgeeks.googlecode.com/svn/docs/maven-merge-properties-plugin/${project.version}</url>
 		</site>
 	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<powermock.version>1.2.5</powermock.version>
+	</properties>
 
 	<build>
 		<plugins>
@@ -158,14 +164,14 @@
 		<dependency>
 			<groupId>org.powermock.modules</groupId>
 			<artifactId>powermock-module-junit4</artifactId>
-			<version>1.2.5</version>
+			<version>${powermock.version}</version>
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.powermock.api</groupId>
 			<artifactId>powermock-api-easymock</artifactId>
-			<version>1.2.5</version>
+			<version>${powermock.version}</version>
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
