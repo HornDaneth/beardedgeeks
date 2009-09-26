@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.beardedgeeks</groupId>
 	<artifactId>maven-merge-properties-plugin</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.1</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Maven Merge Properties Plugin</name>
@@ -45,9 +44,9 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:svn:http://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin</connection>
-		<developerConnection>scm:svn:https://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin</developerConnection>
-		<url>http://code.google.com/p/beardedgeeks/source/browse/#svn/maven-merge-properties-plugin</url>
+		<connection>scm:svn:http://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.1.1</connection>
+		<developerConnection>scm:svn:https://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.1.1</developerConnection>
+		<url>http://code.google.com/p/beardedgeeks/source/browse/#svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.1.1</url>
 	</scm>
 
 	<issueManagement>
