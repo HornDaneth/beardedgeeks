@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.beardedgeeks</groupId>
+	<artifactId>maven-merge-properties-plugin</artifactId>
+	<version>0.1.1</version>
+	<packaging>maven-plugin</packaging>
+
+	<name>Maven Merge Properties Plugin</name>
+	<description>Merges multiple properties files into one.</description>
+	<inceptionYear>2009</inceptionYear>
+	<url>http://code.google.com/p/beardedgeeks</url>
+
+	<prerequisites>
+		<maven>2.0.9</maven>
+	</prerequisites>
+
+	<developers>
+		<developer>
+			<id>hleinone</id>
+			<name>Hannu Leinonen</name>
+			<email>hleinone@gmail.com</email>
+			<url>http://hamandeggs.wordpress.com</url>
+			<organization>Bearded Geeks</organization>
+			<organizationUrl>http://beardedgeeks.org</organizationUrl>
+			<roles>
+				<role>owner</role>
+			</roles>
+			<timezone>+2</timezone>
+		</developer>
+	</developers>
+
+	<organization>
+		<name>Bearded Geeks</name>
+		<url>http://beardedgeeks.org</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:svn:http://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.1.1</connection>
+		<developerConnection>scm:svn:https://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.1.1</developerConnection>
+		<url>http://code.google.com/p/beardedgeeks/source/browse/#svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.1.1</url>
+	</scm>
+
+	<issueManagement>
+		<system>Google Code</system>
+		<url>http://code.google.com/p/beardedgeeks/issues/list</url>
+	</issueManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>beardedgeeks-googlecode</id>
+			<url>svn:https://beardedgeeks.googlecode.com/svn/repository/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>beardedgeeks-googlecode</id>
+			<uniqueVersion>false</uniqueVersion>
+			<url>svn:https://beardedgeeks.googlecode.com/svn/repository/snapshots</url>
+		</snapshotRepository>
+		<site>
+			<id>beardedgeeks-googlecode</id>
+			<url>svn:https://beardedgeeks.googlecode.com/svn/docs/maven-merge-properties-plugin/${project.version}</url>
+		</site>
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<powermock.version>1.2.5</powermock.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.0.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.0-beta-9</version>
+			</plugin>
+		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.jvnet.wagon-svn</groupId>
+				<artifactId>wagon-svn</artifactId>
+				<version>1.9</version>
+			</extension>
+		</extensions>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
+		<repository>
+			<id>powermock-repo</id>
+			<url>http://powermock.googlecode.com/svn/repo</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>2.5.1</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymockclassextension</artifactId>
+			<version>2.4</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock.modules</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock.api</groupId>
+			<artifactId>powermock-api-easymock</artifactId>
+			<version>${powermock.version}</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>${prerequisites.maven}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-plugin-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.1.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.6</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.4.3</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.0.2</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.2</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
