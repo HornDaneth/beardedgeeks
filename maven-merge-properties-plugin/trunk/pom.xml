@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.beardedgeeks</groupId>
 	<artifactId>maven-merge-properties-plugin</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.2-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Maven Merge Properties Plugin</name>
 	<description>Merges multiple properties files into one.</description>
-	<inceptionYear>2009</inceptionYear>
 	<url>http://code.google.com/p/beardedgeeks</url>
-
-	<prerequisites>
-		<maven>2.0.9</maven>
-	</prerequisites>
+	<inceptionYear>2009</inceptionYear>
+	<organization>
+		<name>Bearded Geeks</name>
+		<url>http://beardedgeeks.org</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 
 	<developers>
 		<developer>
@@ -31,51 +38,28 @@
 		</developer>
 	</developers>
 
-	<organization>
-		<name>Bearded Geeks</name>
-		<url>http://beardedgeeks.org</url>
-	</organization>
-
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-		</license>
-	</licenses>
-
+	<issueManagement>
+		<system>Google Code</system>
+		<url>http://code.google.com/p/beardedgeeks/issues/list</url>
+	</issueManagement>
 	<scm>
 		<connection>scm:svn:http://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin</connection>
 		<developerConnection>scm:svn:https://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin</developerConnection>
 		<url>http://code.google.com/p/beardedgeeks/source/browse/#svn/maven-merge-properties-plugin</url>
 	</scm>
 
-	<issueManagement>
-		<system>Google Code</system>
-		<url>http://code.google.com/p/beardedgeeks/issues/list</url>
-	</issueManagement>
-
-	<distributionManagement>
-		<repository>
-			<id>beardedgeeks-googlecode</id>
-			<url>svn:https://beardedgeeks.googlecode.com/svn/repository/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>beardedgeeks-googlecode</id>
-			<uniqueVersion>false</uniqueVersion>
-			<url>svn:https://beardedgeeks.googlecode.com/svn/repository/snapshots</url>
-		</snapshotRepository>
-		<site>
-			<id>beardedgeeks-googlecode</id>
-			<url>svn:https://beardedgeeks.googlecode.com/svn/docs/maven-merge-properties-plugin/${project.version}</url>
-		</site>
-	</distributionManagement>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<powermock.version>1.2.5</powermock.version>
-	</properties>
+	<prerequisites>
+		<maven>2.0.9</maven>
+	</prerequisites>
 
 	<build>
+		<extensions>
+			<extension>
+				<groupId>org.jvnet.wagon-svn</groupId>
+				<artifactId>wagon-svn</artifactId>
+				<version>1.9</version>
+			</extension>
+		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -123,14 +107,23 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<extensions>
-			<extension>
-				<groupId>org.jvnet.wagon-svn</groupId>
-				<artifactId>wagon-svn</artifactId>
-				<version>1.9</version>
-			</extension>
-		</extensions>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>beardedgeeks-googlecode</id>
+			<url>svn:https://beardedgeeks.googlecode.com/svn/repository/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>beardedgeeks-googlecode</id>
+			<uniqueVersion>false</uniqueVersion>
+			<url>svn:https://beardedgeeks.googlecode.com/svn/repository/snapshots</url>
+		</snapshotRepository>
+		<site>
+			<id>beardedgeeks-googlecode</id>
+			<url>svn:https://beardedgeeks.googlecode.com/svn/docs/maven-merge-properties-plugin/${project.version}</url>
+		</site>
+	</distributionManagement>
 
 	<repositories>
 		<repository>
@@ -224,4 +217,9 @@
 			</plugin>
 		</plugins>
 	</reporting>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<powermock.version>1.2.5</powermock.version>
+	</properties>
 </project>
