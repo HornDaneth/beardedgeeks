@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Maven Merge Properties Plugin - Usage</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          <meta name="author" content="hleinone" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                    <span id="bannerLeft">
+    
+            Maven Merge Properties Plugin
+    
+            </span>
+                        <a href="http://beardedgeeks.org" id="bannerRight">
+    
+                                            <img src="bannerRight.png" alt="Bearded Geeks" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 09 Oct 2009 00:08:21
+                  &nbsp;| Version: 0.2
+                      </div>
+            <div class="xright">            <a href="http://maven.apache.org/" class="externalLink">Maven 2</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="plugin-info.html">Goals</a>
+          </li>
+              
+    <li class="none">
+              <strong>Usage</strong>
+        </li>
+          </ul>
+              <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-reports.html">Project Reports</a>
+                </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Usage</h2>
+<div class="section"><h3>Configuring the plugin</h3>
+<p>To start using the plugin you will need to configure the repository location for the plugin.</p>
+<div class="source"><pre>&lt;project&gt;
+  ...
+  &lt;pluginRepositories&gt;
+    &lt;pluginRepository&gt;
+      &lt;id&gt;beardedgeeks-releases&lt;/id&gt;
+      &lt;url&gt;http://beardedgeeks.googlecode.com/svn/repository/releases&lt;/url&gt;
+    &lt;/pluginRepository&gt;
+  &lt;/pluginRepositories&gt;
+  ...
+&lt;/project&gt;</pre>
+</div>
+<p>To configure the merged properties files you have to list them in the plugin configuration. Note that the order of <tt>propertiesFile</tt> entries matters, the properties of the ones listed below are being overridden by the properties from the ones above.</p>
+<div class="source"><pre>&lt;project&gt;
+  ...
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.beardedgeeks&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-merge-properties-plugin&lt;/artifactId&gt;
+        &lt;version&gt;0.2&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;merges&gt;
+            &lt;merge&gt;
+              &lt;targetFile&gt;${build.outputDirectory}/application.properties&lt;/targetFile&gt;
+              &lt;propertiesFiles&gt;
+                &lt;propertiesFile&gt;src/main/config/${property}/application.properties&lt;/propertiesFile&gt;
+                &lt;propertiesFile&gt;src/main/config/default/application.properties&lt;/propertiesFile&gt;
+              &lt;/propertiesFiles&gt;
+            &lt;/merge&gt;
+          &lt;/merges&gt;
+        &lt;/configuration&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;phase&gt;compile&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;merge&lt;/goal&gt;
+            &lt;/goals&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+  ...
+&lt;/project&gt;</pre>
+</div>
+<p>The example configuration above merges some custom application.properties with a default one so that if a property exists in both properties files, the one from the custom file is used over the from the default application.properties file. The merged properties file is then moved to the project output directory. Also, the plugin execution is bound to compile phase so that it runs automatically on each compilation.</p>
+</div>
+<div class="section"><h3>Using Maven properties</h3>
+<p>In the example above the <tt>${property}</tt> variable is just a plain <a class="externalLink" href="http://maven.apache.org/pom.html#Properties">Maven property</a>. Those can be provided to the plugin using for example <a class="externalLink" href="http://maven.apache.org/guides/introduction/introduction-to-profiles.html">build profiles</a>, <a class="externalLink" href="http://maven.apache.org/examples/injecting-properties-via-settings.html">settings.xml</a> or command-line arguments appending f.ex. <tt>-Dproperty=foo</tt> to the command. It's also possible to use any environment variable or <a class="externalLink" href="http://java.sun.com/docs/books/tutorial/essential/environment/sysprop.html">Java System Property</a>. That enables f.ex. creation of user-specific properties files using the <tt>${user.name}</tt> property.</p>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2009
+    
+          Bearded Geeks
+          
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
