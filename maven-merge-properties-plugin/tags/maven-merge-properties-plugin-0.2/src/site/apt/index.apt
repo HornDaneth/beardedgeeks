@@ -1,0 +1,16 @@
+  ------
+  Introduction
+  ------
+  hleinone
+  ------
+  20th September 20009
+  ------
+
+About Maven Merge Properties Plugin
+
+  The Merge Properties plugin merges multiple properties files into one. It
+  allows creation of f.ex. user/environment-specific files that are then merged
+  with default properties files. To use, specify the desired properties files
+  in plugin configuration and then run
+  {{{merge-mojo.html}merge-properties:merge}} goal. More specific usage
+  instructions can be found on the {{{usage.html}usage page}}.

@@ -1,0 +1,87 @@
+  ------
+  Usage
+  ------
+  hleinone
+  ------
+  26th September 20009
+  ------
+
+Usage
+
+* Configuring the plugin
+
+  To start using the plugin you will need to configure the repository location
+  for the plugin.
+
++---+
+<project>
+  ...
+  <pluginRepositories>
+    <pluginRepository>
+      <id>beardedgeeks-releases</id>
+      <url>http://beardedgeeks.googlecode.com/svn/repository/releases</url>
+    </pluginRepository>
+  </pluginRepositories>
+  ...
+</project>
++---+ 
+
+  To configure the merged properties files you have to list them in the plugin
+  configuration. Note that the order of <<<propertiesFile>>> entries matters,
+  the properties of the ones listed below are being overridden by the
+  properties from the ones above.
+  
++---+
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.beardedgeeks</groupId>
+        <artifactId>maven-merge-properties-plugin</artifactId>
+        <version>${project.version}</version>
+        <configuration>
+          <merges>
+            <merge>
+              <targetFile>${build.outputDirectory}/application.properties</targetFile>
+              <propertiesFiles>
+                <propertiesFile>src/main/config/${property}/application.properties</propertiesFile>
+                <propertiesFile>src/main/config/default/application.properties</propertiesFile>
+              </propertiesFiles>
+            </merge>
+          </merges>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>merge</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  ...
+</project>
++---+ 
+
+  The example configuration above merges some custom application.properties
+  with a default one so that if a property exists in both properties files, the
+  one from the custom file is used over the from the default
+  application.properties file. The merged properties file is then moved to the
+  project output directory. Also, the plugin execution is bound to compile
+  phase so that it runs automatically on each compilation.
+  
+*  Using Maven properties
+
+  In the example above the <<<$\{property\}>>> variable is just a plain
+  {{{http://maven.apache.org/pom.html#Properties}Maven property}}. Those can be
+  provided to the plugin using for example
+  {{{http://maven.apache.org/guides/introduction/introduction-to-profiles.html}build profiles}},
+  {{{http://maven.apache.org/examples/injecting-properties-via-settings.html}settings.xml}}
+  or command-line arguments appending f.ex. <<<-Dproperty=foo>>> to the
+  command. It's also possible to use any environment variable or
+  {{{http://java.sun.com/docs/books/tutorial/essential/environment/sysprop.html}Java System Property}}.
+  That enables f.ex. creation of user-specific properties files using the
+  <<<$\{user.name\}>>> property.
