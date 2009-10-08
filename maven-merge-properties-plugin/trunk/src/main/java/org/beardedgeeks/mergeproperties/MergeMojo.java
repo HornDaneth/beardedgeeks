@@ -23,7 +23,7 @@ import org.apache.maven.plugin.MojoFailureException;
  * @goal merge
  * @requiresProject
  */
-public class MergePropertiesMojo extends AbstractMojo {
+public class MergeMojo extends AbstractMojo {
 	/**
 	 * The properties files to merge. <br>
 	 * Usage:

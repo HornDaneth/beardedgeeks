@@ -22,16 +22,16 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
- * Test class for {@link MergePropertiesMojo}.
+ * Test class for {@link MergeMojo}.
  * 
  * @author hleinone
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(MergePropertiesMojo.class)
-public class MergePropertiesMojoTest {
+@PrepareForTest(MergeMojo.class)
+public class MergeMojoTest {
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_propertiesFileIsDirectory() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -39,7 +39,7 @@ public class MergePropertiesMojoTest {
 		final File fileMock = createMock(File.class);
 		final File[] files = new File[] { fileMock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -54,7 +54,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_propertiesFileNotExists() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -62,7 +62,7 @@ public class MergePropertiesMojoTest {
 		final File fileMock = createMock(File.class);
 		final File[] files = new File[] { fileMock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -78,7 +78,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_propertiesFileNotFound() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -86,7 +86,7 @@ public class MergePropertiesMojoTest {
 		final File fileMock = createMock(File.class);
 		final File[] files = new File[] { fileMock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -104,7 +104,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_propertiesFileCanNotRead() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -112,7 +112,7 @@ public class MergePropertiesMojoTest {
 		final File fileMock = createMock(File.class);
 		final File[] files = new File[] { fileMock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -129,7 +129,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_propertiesFileCanNotReadOnLoad() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -137,7 +137,7 @@ public class MergePropertiesMojoTest {
 		final File fileMock = createMock(File.class);
 		final File[] files = new File[] { fileMock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -166,7 +166,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetFileIsDirectory() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -177,7 +177,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -217,7 +217,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetFileDeletionFails() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -228,7 +228,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -270,7 +270,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetDirectoriesCanNotCreate() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -283,7 +283,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -332,7 +332,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetDirectoryIsNotADirectory() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -345,7 +345,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -394,7 +394,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetFileCanNotCreate() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -407,7 +407,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -455,7 +455,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetFileCreateCanNotWrite() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -468,7 +468,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -516,7 +516,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetFileNotFound() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -529,7 +529,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -579,7 +579,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetFileCanNotWrite() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -592,7 +592,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -642,7 +642,7 @@ public class MergePropertiesMojoTest {
 
 	@Test(expected = MojoExecutionException.class)
 	public void testExecute_targetFileCanNotWriteOnStore() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -655,7 +655,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
@@ -711,7 +711,7 @@ public class MergePropertiesMojoTest {
 
 	@Test
 	public void testExecute() throws Exception {
-		final MergePropertiesMojo mojo = new MergePropertiesMojo();
+		final MergeMojo mojo = new MergeMojo();
 
 		final Merge mergeMock = createMock(Merge.class);
 		final Merge[] merges = new Merge[] { mergeMock };
@@ -724,7 +724,7 @@ public class MergePropertiesMojoTest {
 		final File file2Mock = createMock(File.class);
 		final File[] files = new File[] { file1Mock, file2Mock };
 
-		final Field mergesField = MergePropertiesMojo.class
+		final Field mergesField = MergeMojo.class
 				.getDeclaredField("merges");
 		mergesField.setAccessible(true);
 		mergesField.set(mojo, merges);
