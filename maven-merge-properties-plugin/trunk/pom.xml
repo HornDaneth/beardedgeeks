@@ -4,7 +4,7 @@
 
 	<groupId>org.beardedgeeks</groupId>
 	<artifactId>maven-merge-properties-plugin</artifactId>
-	<version>0.2</version>
+	<version>0.2.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Maven Merge Properties Plugin</name>
@@ -42,9 +42,9 @@
 		<url>http://code.google.com/p/beardedgeeks/issues/list</url>
 	</issueManagement>
 	<scm>
-		<connection>scm:svn:http://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.2</connection>
-		<developerConnection>scm:svn:https://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.2</developerConnection>
-		<url>http://code.google.com/p/beardedgeeks/source/browse/#svn/maven-merge-properties-plugin/tags/maven-merge-properties-plugin-0.2</url>
+		<connection>scm:svn:http://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin</connection>
+		<developerConnection>scm:svn:https://beardedgeeks.googlecode.com/svn/maven-merge-properties-plugin</developerConnection>
+		<url>http://code.google.com/p/beardedgeeks/source/browse/#svn/maven-merge-properties-plugin</url>
 	</scm>
 
 	<prerequisites>
