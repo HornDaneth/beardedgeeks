@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.beardedgeeks</groupId>
+  <artifactId>spring-validation-annotations</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <versioning>
+    <versions>
+      <version>0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20091010203323</lastUpdated>
+  </versioning>
+</metadata>
