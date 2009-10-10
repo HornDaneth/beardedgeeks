@@ -8,13 +8,12 @@
 
 About Spring Validation Annotations
 
-  The Spring Validation Annotations makes creation of Spring validators lots
-  and lots easier! Using the built-in annotations you can annotate the fields
-  in validatable objects with the restrictions you desire to have, and use
-  their respective validators for validating the fields. It's as easy as
-  1-2-3-4!
+  The Spring Validation Annotations makes validation in Spring easier! Using
+  the built-in annotations you can mark the command object's fields with the
+  restrictions you desire, and use their respective validators in the
+  controller.
   
-  An example:
+  An example of a command:
   
 +---+
 @Validatable
@@ -24,5 +23,38 @@ public class Foo {
   @MaxLength(10)
   @MatchesPattern("test.*")
   private String bar;
+}
++---+
+
+  An example of a controller:
+  
++---+
+@Controller
+@RequestMapping("index.html")
+public class IndexController {
+  private final Validator requiredAnnotationValidator;
+  private final Validator matchesPatternAnnotationValidator;
+  private final Validator minLengthAnnotationValidator;
+  private final Validator maxLengthAnnotationValidator;
+
+  @Autowired
+  public IndexController(final Validator requiredAnnotationValidator,
+      final Validator matchesPatternAnnotationValidator,
+      final Validator minLengthAnnotationValidator,
+      final Validator maxLengthAnnotationValidator) {
+    this.requiredAnnotationValidator = requiredAnnotationValidator;
+    this.matchesPatternAnnotationValidator = matchesPatternAnnotationValidator;
+    this.minLengthAnnotationValidator = minLengthAnnotationValidator;
+    this.maxLengthAnnotationValidator = maxLengthAnnotationValidator;
+  }
+
+  @RequestMapping(method = RequestMethod.POST)
+  public String register(final Foo foo, final BindingResult result) {
+    requiredAnnotationValidator.validate(foo, result);
+    minLengthAnnotationValidator.validate(foo, result);
+    maxLengthAnnotationValidator.validate(foo, result);
+    matchesPatternAnnotationValidator.validate(foo, result);
+    ...
+  }
 }
 +---+
