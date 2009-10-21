@@ -70,8 +70,9 @@ Usage
   with a default one so that if a property exists in both properties files, the
   one from the custom file is used over the from the default
   application.properties file. The merged properties file is then moved to the
-  project output directory. Also, the plugin execution is bound to compile
-  phase so that it runs automatically on each compilation.
+  project output directory (on Java EE projects you should consider using 
+  src/main/webapp/WEB-INF/classes instead). Also, the plugin execution is 
+  bound to compile phase so that it runs automatically on each compilation.
   
 *  Using Maven properties
 
