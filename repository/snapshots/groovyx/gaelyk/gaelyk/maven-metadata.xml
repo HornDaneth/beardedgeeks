@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>groovyx.gaelyk</groupId>
+  <artifactId>gaelyk</artifactId>
+  <version>0.3.2-SNAPSHOT</version>
+  <versioning>
+    <versions>
+      <version>0.3.2-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20100121212918</lastUpdated>
+  </versioning>
+</metadata>
