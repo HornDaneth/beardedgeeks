@@ -24,7 +24,6 @@
 			<email>hleinone@gmail.com</email>
 			<url>http://hamandeggs.wordpress.com</url>
 			<organization>Bearded Geeks</organization>
-			<organizationUrl>http://beardedgeeks.org</organizationUrl>
 			<roles>
 				<role>owner</role>
 			</roles>
@@ -39,7 +38,6 @@
 	<scm>
 		<connection>scm:svn:http://beardedgeeks.googlecode.com/svn/gae-eclipse-maven-archetype</connection>
 		<developerConnection>scm:svn:https://beardedgeeks.googlecode.com/svn/gae-eclipse-maven-archetype</developerConnection>
-		<url>http://code.google.com/p/beardedgeeks/source/browse/#svn/gae-eclipse-maven-archetype</url>
 	</scm>
 
 	<build>
@@ -83,6 +81,16 @@
 	</build>
 
 	<repositories>
+		<repository>
+			<id>beardedgeeks-releases</id>
+			<url>http://beardedgeeks.googlecode.com/svn/repository/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 		<repository>
 			<id>beardedgeeks-releases</id>
 			<url>http://beardedgeeks.googlecode.com/svn/repository/releases</url>
