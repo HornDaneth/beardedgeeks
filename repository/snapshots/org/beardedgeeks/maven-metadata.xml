@@ -1,9 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><metadata>
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
   <plugins>
     <plugin>
       <name>Maven Merge Properties Plugin</name>
       <prefix>merge-properties</prefix>
       <artifactId>maven-merge-properties-plugin</artifactId>
+    </plugin>
+    <plugin>
+      <name>GAE + Eclipse + Maven Archetype</name>
+      <prefix>gae-eclipse-maven-archetype</prefix>
+      <artifactId>gae-eclipse-maven-archetype</artifactId>
     </plugin>
   </plugins>
 </metadata>
