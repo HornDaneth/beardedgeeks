@@ -9,12 +9,7 @@
 	<packaging>maven-archetype</packaging>
 	<name>GAE + Eclipse + Maven Archetype</name>
 	<description>Arhectype for Maven managed Google App Engine project which is integrated with Google Plugin for Eclipse.</description>
-	<url>http://code.google.com/p/beardedgeeks</url>
 	<inceptionYear>2010</inceptionYear>
-	<organization>
-		<name>Bearded Geeks</name>
-		<url>http://beardedgeeks.org</url>
-	</organization>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
