@@ -203,13 +203,13 @@ under the License.
     </dependency>
   </dependencies>
   <build>
-		<extensions>
-			<extension>
-				<groupId>org.jvnet.wagon-svn</groupId>
-				<artifactId>wagon-svn</artifactId>
-				<version>1.9</version>
-			</extension>
-		</extensions>
+    <extensions>
+      <extension>
+        <groupId>org.jvnet.wagon-svn</groupId>
+        <artifactId>wagon-svn</artifactId>
+        <version>1.9</version>
+      </extension>
+    </extensions>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -302,6 +302,17 @@ under the License.
       </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+    <repository>
+      <id>beardedgeeks-googlecode</id>
+      <url>svn:https://beardedgeeks.googlecode.com/svn/repository/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>beardedgeeks-googlecode</id>
+      <uniqueVersion>false</uniqueVersion>
+      <url>svn:https://beardedgeeks.googlecode.com/svn/repository/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
   <profiles>
     <profile>
       <id>run-its</id>
