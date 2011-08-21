@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<metadata modelVersion="1.0.0">
+<metadata>
   <groupId>org.beardedgeeks</groupId>
   <artifactId>gae-eclipse-maven-archetype</artifactId>
   <versioning>
@@ -12,7 +12,8 @@
       <version>1.1.2-SNAPSHOT</version>
       <version>1.2-SNAPSHOT</version>
       <version>1.3-SNAPSHOT</version>
+      <version>1.3.2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20100909053834</lastUpdated>
+    <lastUpdated>20110821212120</lastUpdated>
   </versioning>
 </metadata>
